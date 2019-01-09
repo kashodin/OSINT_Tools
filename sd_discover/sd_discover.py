@@ -30,6 +30,7 @@ def get_subs(tld_list, sub_list, verbose_toggle, brute_toggle, ports_list=None):
 	with open('sd_discover_results.txt', 'w') as output:
 		for k in sub_list:
 			output.write(str(k))
+			output.write('')
 			if verbose_toggle:
 				print(k)
 	print('\nResults saved to "sd_discover_results.txt"')
