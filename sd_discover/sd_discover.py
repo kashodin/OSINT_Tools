@@ -20,6 +20,7 @@ def usage():
 	#subdomains = sublist3r.main('yahoo.com', 40, 'yahoo_subdomains.txt', ports= None, silent=False, verbose= False, enable_bruteforce= False, engines=None)
 def get_subs(tld_list, sub_list, verbose_toggle, brute_toggle, ports_list=None):
 	for tld in tld_list:
+		sub_list.append(tld.strip())
 		savefile = "sd_discover_"+str(tld)+".txt"
 		subdomains = sublist3r.main(tld, 40, savefile, ports=ports_list, silent=False, verbose= verbose_toggle, enable_bruteforce=brute_toggle, engines=None)
 		for line in subdomains:
@@ -30,7 +31,7 @@ def get_subs(tld_list, sub_list, verbose_toggle, brute_toggle, ports_list=None):
 	with open('sd_discover_results.txt', 'w') as output:
 		for k in sub_list:
 			output.write(str(k))
-			output.write('')
+			output.write('\n')
 			if verbose_toggle:
 				print(k)
 	print('\nResults saved to "sd_discover_results.txt"')
